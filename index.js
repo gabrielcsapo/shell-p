@@ -10,7 +10,7 @@ module.exports = (file, options) => {
   commands.forEach((command) => {
     switch(command.type) {
       case 'command':
-        if(command.command.value == '#!/bin/sh') {
+        if(command.command.value.indexOf('#!/bin') > -1) {
           return;
         }
         if(command.args.length > 0) {

@@ -1,5 +1,6 @@
-#!/bin/sh
-HELLO="WORLD";
+#!/bin/bash
+
+HELLO=WORLD;
 
 echo "hello world";
 # hey I am a comment

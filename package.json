@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "tape test/**.js",
-    "coverage": "tap --coverage --coverage-report=lcov"
+    "coverage": "tap test/**.js --coverage --coverage-report=lcov"
   },
   "dependencies": {
     "async": "^2.4.1",
