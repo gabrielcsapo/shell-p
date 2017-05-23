@@ -6,11 +6,18 @@
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "test": "tape test/**.js",
+    "coverage": "tap --coverage --coverage-report=lcov"
   },
   "dependencies": {
     "async": "^2.4.1",
     "shell-parse": "0.0.2",
     "stateful-process-command-proxy": "^1.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "tap": "^10.3.2",
+    "tape": "^4.6.3"
   }
 }

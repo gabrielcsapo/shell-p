@@ -8,27 +8,29 @@ module.exports = (file, options) => {
   const parsed = [];
 
   commands.forEach((command) => {
-    console.log(command);
-
     switch(command.type) {
       case 'command':
         if(command.command.value == '#!/bin/sh') {
           return;
         }
-        parsed.push(`${command.command.value} ${command.args.map((arg) => arg.value || `"$${arg.name}"`).join(' ')}`)
+        if(command.args.length > 0) {
+          parsed.push(`${command.command.value} ${command.args.map((arg) => arg.value || `"$${arg.name}"`).join(' ')}${command.control}`)
+        } else {
+          parsed.push(`${command.command.value}${command.control}`)
+        }
         break;
       case 'ifElse':
-        let d = `if `;
+        var d = `if `;
         command.test.forEach((t) => {
-          d += `${t.command} ${t.args.map((arg) => arg.value).join(' ')} ${t.control} \n`
+          d += `${t.command} ${t.args.map((arg) => arg.value).join(' ')}${t.control} \n`
         })
         d += 'then\n';
         command.body.forEach((b) => {
-          d += `${b.command.value} ${b.args.map((arg) => arg.value).join(' ')} ${b.control} \n`
+          d += `${b.command.value} ${b.args.map((arg) => arg.value).join(' ')}${b.control} \n`
         })
         d += 'else\n';
         command.elseBody.forEach((b) => {
-          d += `${b.command.value} ${b.args.map((arg) => arg.value).join(' ')} ${b.control} \n`
+          d += `${b.command.value} ${b.args.map((arg) => arg.value).join(' ')}${b.control} \n`
         })
         d += 'fi\n';
         parsed.push(d);

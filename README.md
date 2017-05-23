@@ -1,5 +1,12 @@
 # shell-p
 
+[![Build Status](https://travis-ci.org/gabrielcsapo/shell-p.svg?branch=master)](https://travis-ci.org/gabrielcsapo/shell-p)
+[![Dependency Status](https://david-dm.org/gabrielcsapo/shell-p.svg)](https://david-dm.org/gabrielcsapo/shell-p)
+[![devDependency Status](https://david-dm.org/gabrielcsapo/shell-p/dev-status.svg)](https://david-dm.org/gabrielcsapo/shell-p#info=devDependencies)
+[![Coverage Status](https://node-coverage-server.herokuapp.com/badge/github%2Ecom/gabrielcsapo/shell-p.svg)](https://node-coverage-server.herokuapp.com/coverage/github%2Ecom/gabrielcsapo/shell-p)
+[![npm](https://img.shields.io/npm/dt/shell-p.svg?maxAge=2592000)]()
+[![npm](https://img.shields.io/npm/dm/shell-p.svg?maxAge=2592000)]()
+
 > Introspect on the most time consuming part of your shell script
 
 # What is this?
@@ -16,6 +23,8 @@ shell(path.resolve(__dirname, './test.sh'))
     console.log(err);
   });
 ```
+
+### output
 
 ```json
 [
