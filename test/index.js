@@ -31,7 +31,7 @@ test('shell-p', (t) => {
         t.equal(res[5].command, 'noop;');
         t.equal(res[5].stdout, '');
         t.ok(res[5].stderr.indexOf('noop: command not found') > -1);
-
+        
         t.end();
       })
       .catch((err) => {

@@ -29,59 +29,51 @@ shell(path.resolve(__dirname, './test.sh'))
 ```json
 [
     {
-        "started": 1495520727838,
-        "command": "HELLO=WORLD;",
-        "stdout": "",
+        "started": 1495838098184,
+        "ended": 1495838098185,
+        "stdout": "\n",
         "stderr": "",
-        "ended": 1495520727846,
-        "duration": 8
-    },
-    {
-        "started": 1495520727846,
-        "command": "echo hello world",
-        "stdout": "hello world",
-        "stderr": "",
-        "ended": 1495520727847,
+        "command": "HELLO=WORLD && echo \"\";",
         "duration": 1
     },
     {
-        "started": 1495520727847,
-        "command": "# hey I am a comment",
+        "started": 1495838098185,
+        "ended": 1495838098186,
+        "stdout": "hello world\n",
+        "stderr": "",
+        "command": "echo hello world;",
+        "duration": 1
+    },
+    {
+        "started": 1495838098186,
+        "ended": 1495838098199,
+        "stdout": "total 80\ndrwxr-xr-x   17 gacsapo  110191191   578 May 26 15:33 .\ndrwxr-xr-x  124 gacsapo  110191191  4216 May 26 12:55 ..\n-rw-r--r--    1 gacsapo  110191191  6148 May 24 13:01 .DS_Store\n-rw-r--r--    1 gacsapo  110191191    34 May 23 10:16 .eslintignore\n-rw-r--r--    1 gacsapo  110191191    88 May 23 09:23 .eslintrc\ndrwxr-xr-x   14 gacsapo  110191191   476 May 26 15:34 .git\n-rw-r--r--    1 gacsapo  110191191    58 May 26 15:14 .gitignore\ndrwxr-xr-x    4 gacsapo  110191191   136 May 26 15:33 .nyc_output\n-rw-r--r--    1 gacsapo  110191191   284 May 23 10:11 .travis.yml\n-rw-r--r--    1 gacsapo  110191191    52 May 26 15:30 CHANGELOG.md\n-rw-r--r--    1 gacsapo  110191191  3099 May 23 10:14 README.md\ndrwxr-xr-x    4 gacsapo  110191191   136 May 23 10:51 coverage\n-rw-r--r--    1 gacsapo  110191191  1464 May 26 15:29 index.js\ndrwxr-xr-x    3 gacsapo  110191191   102 May 22 14:10 lib\ndrwxr-xr-x  292 gacsapo  110191191  9928 May 26 15:01 node_modules\n-rw-r--r--    1 gacsapo  110191191   494 May 26 15:29 package.json\ndrwxr-xr-x    4 gacsapo  110191191   136 May 23 10:43 test\n",
+        "stderr": "",
+        "command": "ls -la;",
+        "duration": 13
+    },
+    {
+        "started": 1495838098199,
+        "ended": 1495838098199,
+        "stdout": "hello again world\n",
+        "stderr": "",
+        "command": "if [ 1 ]; \nthen\necho hello again world; \nelse\necho nope; \nfi\n",
+        "duration": 0
+    },
+    {
+        "started": 1495838098199,
+        "ended": 1495838098200,
+        "stdout": "WORLD\n",
+        "stderr": "",
+        "command": "echo \"$HELLO\";",
+        "duration": 1
+    },
+    {
+        "started": 1495838098200,
+        "ended": 1495838098201,
         "stdout": "",
-        "stderr": "",
-        "ended": 1495520727847,
-        "duration": 0
-    },
-    {
-        "started": 1495520727847,
-        "command": "ls -la",
-        "stdout": "total 48\ndrwxr-xr-x   10 gacsapo  110191191   340 May 22 23:24 .\ndrwxr-xr-x  123 gacsapo  110191191  4182 May 22 23:24 ..\n-rw-r--r--    1 gacsapo  110191191    13 May 22 23:24 .gitignore\n-rw-r--r--    1 gacsapo  110191191   316 May 22 23:25 README.md\n-rw-r--r--    1 gacsapo  110191191  1342 May 22 23:20 index.js\ndrwxr-xr-x    3 gacsapo  110191191   102 May 22 14:10 lib\ndrwxr-xr-x   53 gacsapo  110191191  1802 May 22 21:37 node_modules\n-rw-r--r--    1 gacsapo  110191191   282 May 22 23:23 package.json\n-rw-r--r--    1 gacsapo  110191191   227 May 22 23:25 test.js\n-rwxr-xr-x    1 gacsapo  110191191   159 May 22 23:21 test.sh",
-        "stderr": "",
-        "ended": 1495520727854,
-        "duration": 7
-    },
-    {
-        "started": 1495520727854,
-        "command": "if [ 1 ] ; \nthen\necho hello again world ; \nelse\necho nope ; \nfi\n",
-        "stdout": "hello again world",
-        "stderr": "",
-        "ended": 1495520727854,
-        "duration": 0
-    },
-    {
-        "started": 1495520727854,
-        "command": "echo \"$HELLO\"",
-        "stdout": "WORLD",
-        "stderr": "",
-        "ended": 1495520727854,
-        "duration": 0
-    },
-    {
-        "started": 1495520727854,
-        "command": "noop ",
-        "stdout": "",
-        "stderr": "/bin/bash: line 13: noop: command not found",
-        "ended": 1495520727855,
+        "stderr": "bash: line 12: noop: command not found\n",
+        "command": "noop;",
         "duration": 1
     }
 ]
