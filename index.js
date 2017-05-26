@@ -10,9 +10,7 @@ module.exports = (file, options) => {
   commands.forEach((command) => {
     switch(command.type) {
       case 'command':
-        if(command.command.value.indexOf('#!/bin') > -1) {
-          return;
-        }
+        if(command.command.value.substring(0, 1) === '#') return;
         if(command.args.length > 0) {
           parsed.push(`${command.command.value} ${command.args.map((arg) => arg.value || `"$${arg.name}"`).join(' ')}${command.control}`)
         } else {
@@ -36,9 +34,9 @@ module.exports = (file, options) => {
         parsed.push(d);
         break;
       case 'variableAssignment':
-        parsed.push(`${command.name}=${command.value.value}${command.control}`)
+        parsed.push(`${command.name}=${command.value.value} && echo ""${command.control}`)
         break;
     }
   });
-  return shell.series(parsed, options);
+  return shell.execute(parsed, options);
 }

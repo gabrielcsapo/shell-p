@@ -1,6 +1,6 @@
 {
   "name": "shell-p",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Introspect on the most time consuming part of your shell script",
   "author": "Gabriel J. Csapo",
   "license": "ISC",
@@ -11,9 +11,7 @@
     "coverage": "tap test/**.js --coverage --coverage-report=lcov"
   },
   "dependencies": {
-    "async": "^2.4.1",
-    "shell-parse": "0.0.2",
-    "stateful-process-command-proxy": "^1.0.1"
+    "shell-parse": "0.0.2"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
