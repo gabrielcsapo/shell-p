@@ -78,3 +78,7 @@ shell(path.resolve(__dirname, './test.sh'))
     }
 ]
 ```
+
+## Known Bugs
+
+- Does not work with shell functions
