@@ -9,6 +9,7 @@ ls -la
 if [ 1 ]
 then
   echo "hello again world"
+  echo "another hello!"
 else
   echo "nope"
 fi

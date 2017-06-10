@@ -11,7 +11,8 @@
     "coverage": "tap test/**.js --coverage --coverage-report=lcov"
   },
   "dependencies": {
-    "shell-parse": "0.0.2"
+    "bash-ast-traverser": "^0.4.1",
+    "bash-parser": "^0.4.0"
   },
   "devDependencies": {
     "eslint": "^3.19.0",

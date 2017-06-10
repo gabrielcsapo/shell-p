@@ -1,42 +1,69 @@
 const fs = require('fs');
-const parse = require('shell-parse');
+const parse = require('bash-parser');
+const traverse = require('bash-ast-traverser');
+
 const shell = require('./lib/shell');
 
-module.exports = (file, options) => {
-  const content = fs.readFileSync(file);
-  const commands = parse(content.toString('utf8'))
-  const parsed = [];
+const parseAst = (ast) => {
+    traverse(ast, {
+        Word: (node) => {
+            Object.defineProperty(node, 'source', {
+                get: () => node.text
+            })
+            return node;
+        },
+        AssignmentWord: (node) => {
+            Object.defineProperty(node, 'source', {
+                get: () => node.text
+            })
+            return node;
+        },
+        Command: (node) => {
+            Object.defineProperty(node, 'source', {
+                get: () => {
+                    const suffix = node.suffix ? node.suffix.map(s => s.source).join(' ') : '';
+                    const prefix = node.prefix ? node.prefix.map(s => s.source).join(' ') : '';
+                    const name = node.name ? node.name.source : '';
+                    return prefix + ' ' + name + ' ' + suffix;
+                }
+            });
+            return node;
+        },
+        If: (node) => {
+            Object.defineProperty(node, 'source', {
+                get: () => {
+                    const _clause = node.clause ? node.clause.commands.map(c => {
+                        parseAst(c);
+                        return c.source;
+                    }).join(' ') : '';
+                    const _then = node.then ? node.then.commands.map(c => {
+                        parseAst(c);
+                        return c.source;
+                    }).join('\n') : '';
+                    const _else = node.else ? node.else.commands.map(c => {
+                        parseAst(c);
+                        return c.source;
+                    }).join(' ') : '';
 
-  commands.forEach((command) => {
-    switch(command.type) {
-      case 'command':
-        if(command.command.value.substring(0, 1) === '#') return;
-        if(command.args.length > 0) {
-          parsed.push(`${command.command.value} ${command.args.map((arg) => arg.value || `"$${arg.name}"`).join(' ')}${command.control}`)
-        } else {
-          parsed.push(`${command.command.value}${command.control}`)
+                    return `if ${_clause}\nthen\n${_then}\nelse\n${_else}\nfi`
+                }
+            });
         }
-        break;
-      case 'ifElse':
-        var d = `if `;
-        command.test.forEach((t) => {
-          d += `${t.command} ${t.args.map((arg) => arg.value).join(' ')}${t.control} \n`
-        })
-        d += 'then\n';
-        command.body.forEach((b) => {
-          d += `${b.command.value} ${b.args.map((arg) => arg.value).join(' ')}${b.control} \n`
-        })
-        d += 'else\n';
-        command.elseBody.forEach((b) => {
-          d += `${b.command.value} ${b.args.map((arg) => arg.value).join(' ')}${b.control} \n`
-        })
-        d += 'fi\n';
-        parsed.push(d);
-        break;
-      case 'variableAssignment':
-        parsed.push(`${command.name}=${command.value.value} && echo ""${command.control}`)
-        break;
-    }
-  });
-  return shell.execute(parsed, options);
+    });
+}
+
+module.exports = (file, options) => {
+    const content = fs.readFileSync(file);
+    const ast = parse(content.toString('utf8'));
+
+    const parsed = [];
+
+    parseAst(ast);
+
+    ast.commands.forEach((command) => {
+        const immediate = command.prefix && command.prefix.map((p => p.type)).indexOf('AssignmentWord') > -1;
+        parsed.push({ immediate: immediate, source: command.source.trim() });
+    });
+    
+    return shell.execute(parsed, options);
 }
