@@ -1,5 +1,7 @@
 # shell-p
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/gabrielcsapo/shell-p.svg)](https://greenkeeper.io/)
+
 [![Npm Version](https://img.shields.io/npm/v/shell-p.svg)](https://www.npmjs.com/package/shell-p)
 [![Build Status](https://travis-ci.org/gabrielcsapo/shell-p.svg?branch=master)](https://travis-ci.org/gabrielcsapo/shell-p)
 [![Dependency Status](https://david-dm.org/gabrielcsapo/shell-p.svg)](https://david-dm.org/gabrielcsapo/shell-p)
