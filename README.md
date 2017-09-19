@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/gabrielcsapo/shell-p.svg?branch=master)](https://travis-ci.org/gabrielcsapo/shell-p)
 [![Dependency Status](https://david-dm.org/gabrielcsapo/shell-p.svg)](https://david-dm.org/gabrielcsapo/shell-p)
 [![devDependency Status](https://david-dm.org/gabrielcsapo/shell-p/dev-status.svg)](https://david-dm.org/gabrielcsapo/shell-p#info=devDependencies)
-[![Coverage Status](https://node-coverage-server.herokuapp.com/badge/github%2Ecom/gabrielcsapo/shell-p.svg)](https://node-coverage-server.herokuapp.com/coverage/github%2Ecom/gabrielcsapo/shell-p)
+[![Coverage Status](https://lcov-server.herokuapp.com/badge/github%2Ecom/gabrielcsapo/shell-p.svg)](https://lcov-server.herokuapp.com/coverage/github%2Ecom/gabrielcsapo/shell-p)
 [![npm](https://img.shields.io/npm/dt/shell-p.svg?maxAge=2592000)]()
 [![npm](https://img.shields.io/npm/dm/shell-p.svg?maxAge=2592000)]()
 
