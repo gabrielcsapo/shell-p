@@ -9,6 +9,7 @@ test('shell-p', (t) => {
   t.test('basic use case', (t) => {
     shell(path.resolve(__dirname, 'fixtures', 'test.sh'))
       .then((res) => {
+        console.log(JSON.stringify(res, null, 4));
         t.equal(res[0].command, 'HELLO=WORLD');
         t.equal(res[0].stdout, '');
         t.equal(res[0].stderr, '');

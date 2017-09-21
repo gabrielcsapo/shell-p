@@ -5,7 +5,7 @@ const traverse = require('bash-ast-traverser');
 const shell = require('./lib/shell');
 
 const parseAst = (ast) => {
-    traverse(ast, {
+    return traverse(ast, {
         Word: (node) => {
             Object.defineProperty(node, 'source', {
                 get: () => node.text
@@ -33,21 +33,19 @@ const parseAst = (ast) => {
             Object.defineProperty(node, 'source', {
                 get: () => {
                     const _clause = node.clause ? node.clause.commands.map(c => {
-                        parseAst(c);
                         return c.source;
                     }).join(' ') : '';
                     const _then = node.then ? node.then.commands.map(c => {
-                        parseAst(c);
                         return c.source;
                     }).join('\n') : '';
                     const _else = node.else ? node.else.commands.map(c => {
-                        parseAst(c);
                         return c.source;
                     }).join(' ') : '';
 
                     return `if ${_clause}\nthen\n${_then}\nelse\n${_else}\nfi`
                 }
             });
+            return node;
         }
     });
 }
@@ -58,12 +56,10 @@ module.exports = (file, options) => {
 
     const parsed = [];
 
-    parseAst(ast);
-
-    ast.commands.forEach((command) => {
+    parseAst(ast)['commands'].forEach((command) => {
         const immediate = command.prefix && command.prefix.map((p => p.type)).indexOf('AssignmentWord') > -1;
         parsed.push({ immediate: immediate, source: command.source.trim() });
     });
-    
+
     return shell.execute(parsed, options);
 }
