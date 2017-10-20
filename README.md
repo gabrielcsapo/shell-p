@@ -4,9 +4,9 @@
 
 [![Npm Version](https://img.shields.io/npm/v/shell-p.svg)](https://www.npmjs.com/package/shell-p)
 [![Build Status](https://travis-ci.org/gabrielcsapo/shell-p.svg?branch=master)](https://travis-ci.org/gabrielcsapo/shell-p)
-[![Dependency Status](https://david-dm.org/gabrielcsapo/shell-p.svg)](https://david-dm.org/gabrielcsapo/shell-p)
-[![devDependency Status](https://david-dm.org/gabrielcsapo/shell-p/dev-status.svg)](https://david-dm.org/gabrielcsapo/shell-p#info=devDependencies)
-[![Coverage Status](https://lcov-server.herokuapp.com/badge/github%2Ecom/gabrielcsapo/shell-p.svg)](https://lcov-server.herokuapp.com/coverage/github%2Ecom/gabrielcsapo/shell-p)
+[![Dependency Status](https://starbuck.gabrielcsapo.com/badge/github/gabrielcsapo/shell-p/status.svg)](https://starbuck.gabrielcsapo.com/github/gabrielcsapo/shell-p)
+[![devDependency Status](https://starbuck.gabrielcsapo.com/badge/github/gabrielcsapo/shell-p/dev-status.svg)](https://starbuck.gabrielcsapo.com/github/gabrielcsapo/shell-p#info=devDependencies)
+[![Coverage Status](https://lcov-server.gabrielcsapo.com/badge/github%2Ecom/gabrielcsapo/shell-p.svg)](https://lcov-server.gabrielcsapo.com/coverage/github%2Ecom/gabrielcsapo/shell-p)
 [![npm](https://img.shields.io/npm/dt/shell-p.svg?maxAge=2592000)]()
 [![npm](https://img.shields.io/npm/dm/shell-p.svg?maxAge=2592000)]()
 
